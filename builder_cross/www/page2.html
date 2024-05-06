@@ -1,0 +1,68 @@
+{% extends "templates/web.html" %}
+
+{% block title %} {{_( doc.name )}} {% endblock %}
+{% block head_include %}
+<style>
+	body,html{
+		padding: 0!important;
+		margin:0!important;
+	}
+	.iframe{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;  
+  width: 100%;
+  min-height: 80vh;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.page_content {
+    display: flex;
+}
+main.container{
+	margin: 0!important;
+		padding: 0!important;
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+    width: 100% !important;
+    max-width: unset;
+
+}
+.web-footer{
+	margin-top: 0;border-top: none;
+}
+</style>
+<script>
+	window.onmessage = function(e) {
+		if(e.data.name==="height"){
+			document.querySelector(".iframe").style.height = e.data.height;
+			document.querySelector(".iframe").style.minHeight = e.data.height;
+		}
+	}
+</script>
+{% endblock %}
+{% block page_content %}
+<iframe class="iframe" src="#" frameborder=0></iframe>
+<script>
+	function isDesktop() {
+		if (/Android|android|webOS|webos|iPhone|iphone|iPad|ipad|iPod|ipod|BlackBerry|blackBerry|IEMobile|iemobile|opera mini|Opera Mini/i.test(navigator.userAgent)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	let integrar="{{doc.integrar}}"
+	if(isDesktop()&& integrar=="0"){
+		document.querySelector(".iframe").setAttribute("src","{{doc.url_escritorio}}&from_partent="+location.pathname+`&crsf_token={{doc.token}}&user={{user}}&origin=${location.origin}`)
+	}else{
+		document.querySelector(".iframe").setAttribute("src","{{doc.url_telefono}}&from_partent="+location.pathname+"&origin="+location.origin)
+	}
+	if(isDesktop()&& integrar=="1"){
+		document.querySelector(".iframe").setAttribute("src","{{doc.url_escritorio}}&from_partent="+location.pathname+`&crsf_token={{doc.token}}&user={{user}}&origin=${location.origin}&integrar=1`)
+	}else{
+		document.querySelector(".iframe").setAttribute("src","{{doc.url_telefono}}&from_partent="+location.pathname+"&integrar=1&origin="+location.origin)
+	}
+</script>
+{% endblock -%}

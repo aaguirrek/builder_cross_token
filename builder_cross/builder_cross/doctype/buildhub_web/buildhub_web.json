@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:nombre",
+ "creation": "2024-04-25 12:34:26.606700",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "nombre",
+  "url_escritorio",
+  "route",
+  "es_dinamica",
+  "column_break_nrnl",
+  "url_telefono",
+  "integrar",
+  "token"
+ ],
+ "fields": [
+  {
+   "fieldname": "nombre",
+   "fieldtype": "Data",
+   "label": "Nombre",
+   "unique": 1
+  },
+  {
+   "fieldname": "url_escritorio",
+   "fieldtype": "Data",
+   "label": "Url Escritorio"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "default": "0",
+   "fieldname": "es_dinamica",
+   "fieldtype": "Check",
+   "label": "Es dinamica"
+  },
+  {
+   "fieldname": "column_break_nrnl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "url_telefono",
+   "fieldtype": "Data",
+   "label": "Url Telefono"
+  },
+  {
+   "default": "0",
+   "fieldname": "integrar",
+   "fieldtype": "Check",
+   "label": "Integrar M\u00e9todos y documentos del sistema"
+  },
+  {
+   "depends_on": "eval:doc.integrar==1",
+   "fieldname": "token",
+   "fieldtype": "Data",
+   "label": "token"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-05-05 23:12:12.787255",
+ "modified_by": "Administrator",
+ "module": "Builder Cross",
+ "name": "Buildhub Web",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

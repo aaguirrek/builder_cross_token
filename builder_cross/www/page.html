@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<script>
+			
+			let frappe={}
+				window.onmessage = function(e) {
+					
+				};
+			</script>
+		<!-- csrf_token -->
+			<style>
+				body,html{
+					padding: 0!important;
+					margin:0!important;
+				}
+				.iframe{
+			  position: absolute;
+			  top: 0;
+			  bottom: 0;
+			  left: 0;
+			  right: 0;
+			  z-index: 1;  
+			  width: 100%;
+			  min-height: 100vh;
+			  -moz-box-sizing: border-box;
+			  box-sizing: border-box;
+			}
+			
+			
+			</style>
+	</head>
+	<body>
+		<iframe class="iframe" src="#" frameborder=0 onload="rz(this)" ></iframe>
+		<script>
+			function isDesktop() {
+				if (/Android|android|webOS|webos|iPhone|iphone|iPad|ipad|iPod|ipod|BlackBerry|blackBerry|IEMobile|iemobile|opera mini|Opera Mini/i.test(navigator.userAgent)) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+			let integrar="{{doc.integrar}}"
+			if(isDesktop()&& integrar=="0"){
+				document.querySelector(".iframe").setAttribute("src","{{doc.url_escritorio}}&from_partent="+location.pathname+`&crsf_token=${frappe.csrf_token}&origin=${location.origin}`)
+			}else{
+				document.querySelector(".iframe").setAttribute("src","{{doc.url_telefono}}&from_partent="+location.pathname+"&origin="+location.origin)
+			}
+			if(isDesktop()&& integrar=="1"){
+				document.querySelector(".iframe").setAttribute("src","{{doc.url_escritorio}}&from_partent="+location.pathname+`&crsf_token=${frappe.csrf_token}&origin=${location.origin}&integrar=1`)
+			}else{
+				document.querySelector(".iframe").setAttribute("src","{{doc.url_telefono}}&from_partent="+location.pathname+"&integrar=1&origin="+location.origin)
+			}
+		
+		</script>
+		
+
+
+	</body>
+</html>

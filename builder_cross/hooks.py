@@ -32,7 +32,12 @@ app_license = "mit"
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
-
+website_route_rules = [
+	{"from_route": "/page/<name>", "to_route": "page"},
+	{"from_route": "/page/<name>/<variable>", "to_route": "page"},
+	{"from_route": "/web/<name>", "to_route": "page2"},
+	{"from_route": "/web/<name>/<variable>", "to_route": "page2"},
+]
 # Svg Icons
 # ------------------
 # include app icons in desk

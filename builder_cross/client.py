@@ -24,9 +24,9 @@ Handle RESTful requests that are mapped to the `/api/resource` route.
 Requests via FrappeClient are also handled here.
 """
 
-
 @frappe.whitelist(allow_guest=True)
 def get_list(
+	user,
 	doctype,
 	fields=None,
 	filters=None,
@@ -47,6 +47,7 @@ def get_list(
 	:param order_by: Order by this fieldname
 	:param limit_start: Start at this index
 	:param limit_page_length: Number of records to be returned (default 20)"""
+	frappe.set_user(user)
 	if frappe.is_table(doctype):
 		check_parent_permission(parent, doctype)
 
@@ -69,17 +70,19 @@ def get_list(
 
 
 @frappe.whitelist()
-def get_count(doctype, filters=None, debug=False, cache=False):
+def get_count(user,doctype, filters=None, debug=False, cache=False):
+	frappe.set_user(user)
 	return frappe.db.count(doctype, get_safe_filters(filters), debug, cache)
 
 
 @frappe.whitelist()
-def get(doctype, name=None, filters=None, parent=None):
+def get(user,doctype, name=None, filters=None, parent=None):
 	"""Returns a document by name or filters
 
 	:param doctype: DocType of the document to be returned
 	:param name: return document of this `name`
 	:param filters: If name is not set, filter by these values and return the first match"""
+	frappe.set_user(user)
 	if frappe.is_table(doctype):
 		check_parent_permission(parent, doctype)
 
@@ -95,136 +98,15 @@ def get(doctype, name=None, filters=None, parent=None):
 
 	return doc.as_dict()
 
-
-
-@frappe.whitelist()
-def set_camiones():
 	
-	allautos = json.loads(requests.get("https://dbo.one.com.pe/services/api/ApiVehiculo/ObtenerVehiculoWeb/3/0").json()["Listado"])
-	for auto in allautos:
-		camion = json.loads(requests.get("https://dbo.one.com.pe/services/api/ApiVehiculo/ObtenerVehiculoWeb/3/"+str(auto["IdVehiculo"])).json()["Objeto"])
-		if camion["Transmision"]!= None:
-			camion["Transmision"] = "No definido"
-		if camion["Tipo"]!= None:
-			camion["Tipo"] = "No definido"
-		slideshowItems=[]
-		for foto in camion["Fotos"]:
-			slideshowItems.append(
-				frappe.get_doc({
-					"doctype":"Website Slideshow Item",
-					"image":foto
-				})
-			)
-		
-		slideshow = frappe.get_doc({
-			"doctype":"Website Slideshow",
-			"slideshow_name":camion["Marca"]+" "+camion["Modelo"]+" "+str(camion["Anio"]),
-			"slideshow_items":slideshowItems
-		})
-
-		slideshow.insert(ignore_permissions=True,ignore_if_duplicate=True)
-		
-		doc = frappe.get_doc({
-		"doctype":"Camiones",
-		"titulo_de_la_unidad":camion["Marca"]+" "+camion["Modelo"]+" "+str(camion["Anio"]),
-		"marca":camion["Marca"],
-		"color":camion["Color"],
-		"km":camion["Kilometraje"],
-		"traccion":camion["Traccion"],
-		"n_de_marchas":camion["NumMarchas"],
-		"carrocería":camion["Carroceria"],
-		"combustible":camion["Combustible"],
-		"ejes_delanteros":camion["EjesDelantero"],
-		"ejes_posteriores":camion["EjesPosterior"],
-		"embrague":camion["Embrague"],
-		"foto_principal":camion["FotoPrincipal"],
-		"motor":camion["MarcaMotor"],
-		"modelo":camion["Modelo"],
-		"potencia_máxima":camion["PotenciaMaxima"],
-		"transmision":camion["Transmision"],
-		"ubicacion":camion["Ubicacion"],
-		"tipo":camion["Tipo"],
-		"torque_máximo":camion["TorqueMaximo"],
-		"anio":camion["Anio"],
-		"etiqueta":camion["EtiquetaPrincipal"],
-		"cilindrada":camion["Cilindrada"]+"cc",
-		"ratio_diferencial":camion["RatioDiferencial"],
-		"bloqueo_diferencial":camion["BloqueoDiferencial"],
-		"numero":camion["IdVehiculo"],
-		"carrusel_de_fotos":camion["Marca"]+" "+camion["Modelo"]+" "+str(camion["Anio"]),
-		"precio_venta":camion["PrecioVenta"],
-		"precio_venta_soles":camion["PrecioVentaSoles"]
-			})
-		doc.insert(ignore_permissions=True,ignore_if_duplicate=True)
-
-
 @frappe.whitelist()
-def get_from_apis(id):
-
-	camion = json.loads(requests.get("https://dbo.one.com.pe/services/api/ApiVehiculo/ObtenerVehiculoWeb/3/"+id).json()["Objeto"])
-	if camion["Transmision"]!= None:
-		camion["Transmision"] = "No definido"
-	if camion["Tipo"]!= None:
-		camion["Tipo"] = "No definido"
-	slideshowItems=[]
-	for foto in camion["Fotos"]:
-		slideshowItems.append(
-			frappe.get_doc({
-				"doctype":"Website Slideshow Item",
-				"image":foto
-			})
-		)
-	
-	slideshow = frappe.get_doc({
-		"doctype":"Website Slideshow",
-		"slideshow_name":camion["Marca"]+" "+camion["Modelo"]+" "+str(camion["Anio"]),
-		"slideshow_items":slideshowItems
-	})
-
-	slideshow.insert(ignore_permissions=True,ignore_if_duplicate=True)
-	
-	doc = frappe.get_doc({
-		"doctype":"Camiones",
-		"titulo_de_la_unidad":camion["Marca"]+" "+camion["Modelo"]+" "+str(camion["Anio"]),
-		"marca":camion["Marca"],
-		"color":camion["Color"],
-		"km":camion["Kilometraje"],
-		"traccion":camion["Traccion"],
-		"n_de_marchas":camion["NumMarchas"],
-		"carrocería":camion["Carroceria"],
-		"combustible":camion["Combustible"],
-		"ejes_delanteros":camion["EjesDelantero"],
-		"ejes_posteriores":camion["EjesPosterior"],
-		"embrague":camion["Embrague"],
-		"foto_principal":camion["FotoPrincipal"],
-		"motor":camion["MarcaMotor"],
-		"modelo":camion["Modelo"],
-		"potencia_máxima":camion["PotenciaMaxima"],
-		"transmision":camion["Transmision"],
-		"ubicacion":camion["Ubicacion"],
-		"tipo":camion["Tipo"],
-		"torque_máximo":camion["TorqueMaximo"],
-		"anio":camion["Anio"],
-		"etiqueta":camion["EtiquetaPrincipal"],
-		"cilindrada":camion["Cilindrada"]+"cc",
-		"ratio_diferencial":camion["RatioDiferencial"],
-		"bloqueo_diferencial":camion["BloqueoDiferencial"],
-		"numero":camion["IdVehiculo"],
-		"carrusel_de_fotos":camion["Marca"]+" "+camion["Modelo"]+" "+str(camion["Anio"]),
-		"precio_venta":camion["PrecioVenta"],
-		"precio_venta_soles":camion["PrecioVentaSoles"]
-		})
-	doc.insert(ignore_permissions=True,ignore_if_duplicate=True)
-
-		
-
-@frappe.whitelist()
-def get_value(doctype, fieldname, filters=None, as_dict=True, debug=False, parent=None):
+def get_value(user,doctype, fieldname, filters=None, as_dict=True, debug=False, parent=None):
 	"""Returns a value form a document
 
 	:param doctype: DocType to be queried
 	:param fieldname: Field to be returned (default `name`)
 	:param filters: dict or string for identifying the record"""
+	frappe.set_user(user)
 	if frappe.is_table(doctype):
 		check_parent_permission(parent, doctype)
 
@@ -269,7 +151,8 @@ def get_value(doctype, fieldname, filters=None, as_dict=True, debug=False, paren
 
 
 @frappe.whitelist()
-def get_single_value(doctype, field):
+def get_single_value(user,doctype, field):
+	frappe.set_user(user)
 	if not frappe.has_permission(doctype):
 		frappe.throw(_("No permission for {0}").format(_(doctype)), frappe.PermissionError)
 
@@ -277,14 +160,14 @@ def get_single_value(doctype, field):
 
 
 @frappe.whitelist(methods=["POST", "PUT"])
-def set_value(doctype, name, fieldname, value=None):
+def set_value(user,doctype, name, fieldname, value=None):
 	"""Set a value using get_doc, group of values
 
 	:param doctype: DocType of the document
 	:param name: name of the document
 	:param fieldname: fieldname string or JSON / dict with key value pair
 	:param value: value if fieldname is JSON / dict"""
-
+	frappe.set_user(user)
 	if fieldname in (frappe.model.default_fields + frappe.model.child_table_fields):
 		frappe.throw(_("Cannot edit standard fields"))
 
@@ -314,10 +197,11 @@ def set_value(doctype, name, fieldname, value=None):
 
 
 @frappe.whitelist(methods=["POST", "PUT"])
-def insert(doc=None):
+def insert(user,doc=None):
 	"""Insert a document
 
 	:param doc: JSON or dict object to be inserted"""
+	frappe.set_user(user)
 	if isinstance(doc, str):
 		doc = json.loads(doc)
 
@@ -325,10 +209,11 @@ def insert(doc=None):
 
 
 @frappe.whitelist(methods=["POST", "PUT"])
-def insert_many(docs=None):
+def insert_many(user,docs=None):
 	"""Insert multiple documents
 
 	:param docs: JSON or list of dict objects to be inserted in one request"""
+	frappe.set_user(user)
 	if isinstance(docs, str):
 		docs = json.loads(docs)
 
@@ -339,10 +224,11 @@ def insert_many(docs=None):
 
 
 @frappe.whitelist(methods=["POST", "PUT"])
-def save(doc):
+def save(user,doc):
 	"""Update (save) an existing document
 
 	:param doc: JSON or dict object with the properties of the document to be updated"""
+	frappe.set_user(user)
 	if isinstance(doc, str):
 		doc = json.loads(doc)
 
@@ -353,21 +239,23 @@ def save(doc):
 
 
 @frappe.whitelist(methods=["POST", "PUT"])
-def rename_doc(doctype, old_name, new_name, merge=False):
+def rename_doc(user,doctype, old_name, new_name, merge=False):
 	"""Rename document
 
 	:param doctype: DocType of the document to be renamed
 	:param old_name: Current `name` of the document to be renamed
 	:param new_name: New `name` to be set"""
+	frappe.set_user(user)
 	new_name = frappe.rename_doc(doctype, old_name, new_name, merge=merge)
 	return new_name
 
 
 @frappe.whitelist(methods=["POST", "PUT"])
-def submit(doc):
+def submit(user,doc):
 	"""Submit a document
 
 	:param doc: JSON or dict object to be submitted remotely"""
+	frappe.set_user(user)
 	if isinstance(doc, str):
 		doc = json.loads(doc)
 
@@ -378,11 +266,12 @@ def submit(doc):
 
 
 @frappe.whitelist(methods=["POST", "PUT"])
-def cancel(doctype, name):
+def cancel(user,doctype, name):
 	"""Cancel a document
 
 	:param doctype: DocType of the document to be cancelled
 	:param name: name of the document to be cancelled"""
+	frappe.set_user(user)
 	wrapper = frappe.get_doc(doctype, name)
 	wrapper.cancel()
 
@@ -390,19 +279,21 @@ def cancel(doctype, name):
 
 
 @frappe.whitelist(methods=["DELETE", "POST"])
-def delete(doctype, name):
+def delete(user,doctype, name):
 	"""Delete a remote document
 
 	:param doctype: DocType of the document to be deleted
 	:param name: name of the document to be deleted"""
+	frappe.set_user(user)
 	delete_doc(doctype, name)
 
 
 @frappe.whitelist(methods=["POST", "PUT"])
-def bulk_update(docs):
+def bulk_update(user,docs):
 	"""Bulk update documents
 
 	:param docs: JSON list of documents to be updated remotely. Each document must have `docname` property"""
+	frappe.set_user(user)
 	docs = json.loads(docs)
 	failed_docs = []
 	for doc in docs:
@@ -418,46 +309,50 @@ def bulk_update(docs):
 
 
 @frappe.whitelist()
-def has_permission(doctype, docname, perm_type="read"):
+def has_permission(user,doctype, docname, perm_type="read"):
 	"""Returns a JSON with data whether the document has the requested permission
 
 	:param doctype: DocType of the document to be checked
 	:param docname: `name` of the document to be checked
 	:param perm_type: one of `read`, `write`, `create`, `submit`, `cancel`, `report`. Default is `read`"""
 	# perm_type can be one of read, write, create, submit, cancel, report
+	frappe.set_user(user)
 	return {"has_permission": frappe.has_permission(doctype, perm_type.lower(), docname)}
 
 
 @frappe.whitelist()
-def get_doc_permissions(doctype, docname):
+def get_doc_permissions(user,doctype, docname):
 	"""Returns an evaluated document permissions dict like `{"read":1, "write":1}`
 
 	:param doctype: DocType of the document to be evaluated
 	:param docname: `name` of the document to be evaluated
 	"""
+	frappe.set_user(user)
 	doc = frappe.get_doc(doctype, docname)
 	return {"permissions": frappe.permissions.get_doc_permissions(doc)}
 
 
 @frappe.whitelist()
-def get_password(doctype, name, fieldname):
+def get_password(user,doctype, name, fieldname):
 	"""Return a password type property. Only applicable for System Managers
 
 	:param doctype: DocType of the document that holds the password
 	:param name: `name` of the document that holds the password
 	:param fieldname: `fieldname` of the password property
 	"""
+	frappe.set_user(user)
 	frappe.only_for("System Manager")
 	return frappe.get_doc(doctype, name).get_password(fieldname)
 
 
 @frappe.whitelist()
 @deprecated
-def get_js(items):
+def get_js(user,items):
 	"""Load JS code files.  Will also append translations
 	and extend `frappe._messages`
 
 	:param items: JSON list of paths of the js files to be loaded."""
+	frappe.set_user(user)
 	items = json.loads(items)
 	out = []
 	for src in items:
@@ -476,13 +371,15 @@ def get_js(items):
 
 
 @frappe.whitelist(allow_guest=True)
-def get_time_zone():
+def get_time_zone(user):
 	"""Returns default time zone"""
+	frappe.set_user(user)
 	return {"time_zone": frappe.defaults.get_defaults().get("time_zone")}
 
 
 @frappe.whitelist(methods=["POST", "PUT"])
 def attach_file(
+	user,
 	filename=None,
 	filedata=None,
 	doctype=None,
@@ -502,7 +399,7 @@ def attach_file(
 	:param decode_base64: decode filedata from base64 encode, default is False
 	:param is_private: Attach file as private file (1 or 0)
 	:param docfield: file to attach to (optional)"""
-
+	frappe.set_user(user)
 	doc = frappe.get_doc(doctype, docname)
 	doc.check_permission()
 
@@ -528,7 +425,8 @@ def attach_file(
 
 
 @frappe.whitelist()
-def is_document_amended(doctype, docname):
+def is_document_amended(user,doctype, docname):
+	frappe.set_user(user)
 	if frappe.permissions.has_permission(doctype):
 		try:
 			return frappe.db.exists(doctype, {"amended_from": docname})
@@ -539,7 +437,8 @@ def is_document_amended(doctype, docname):
 
 
 @frappe.whitelist()
-def validate_link(doctype: str, docname: str, fields=None):
+def validate_link(user,doctype: str, docname: str, fields=None):
+	frappe.set_user(user)
 	if not isinstance(doctype, str):
 		frappe.throw(_("DocType must be a string"))
 
