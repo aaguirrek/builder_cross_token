@@ -1,8 +1,9 @@
 <html>
 	<head>
 		<title>{{title}}</title>
+		<link rel="icon" type="image/x-icon" href="{{favicon}}">
 		<script>
-			//{{favicon}}
+			
 			let frappe={}
 				window.onmessage = function(e) {
 					
@@ -17,14 +18,14 @@
 					margin:0!important;
 				}
 				.iframe{
-			  position: absolute;
+			  position: fixed;
 			  top: 0;
 			  bottom: 0;
 			  left: 0;
 			  right: 0;
 			  z-index: 1;  
 			  width: 100%;
-			  min-height: 100vh;
+			  min-height: 100%;
 			  -moz-box-sizing: border-box;
 			  box-sizing: border-box;
 			}
@@ -43,15 +44,15 @@
 				}
 			}
 			let integrar = "{{doc.integrar}}"
-			if (isDesktop() && integrar == "0") {
-				document.querySelector(".iframe").setAttribute("src", "{{doc.url_escritorio}}&from_partent=" + location.pathname + `&crsf_token={{doc.token}}&user={{user}}&origin=${location.origin}`)
-			} else {
-				document.querySelector(".iframe").setAttribute("src", "{{doc.url_telefono}}&from_partent=" + location.pathname + "&origin=" + location.origin)
+			if(isDesktop()&& integrar=="0"){
+				document.querySelector(".iframe").setAttribute("src","{{doc.url_escritorio}}&from_partent="+location.pathname+`&origin=${location.origin}`)
+			}else{
+				document.querySelector(".iframe").setAttribute("src","{{doc.url_telefono}}&from_partent="+location.pathname+"&origin="+location.origin)
 			}
-			if (isDesktop() && integrar == "1") {
-				document.querySelector(".iframe").setAttribute("src", "{{doc.url_escritorio}}&from_partent=" + location.pathname + `&crsf_token={{doc.token}}&user={{user}}&origin=${location.origin}&integrar=1`)
-			} else {
-				document.querySelector(".iframe").setAttribute("src", "{{doc.url_telefono}}&from_partent=" + location.pathname + "&integrar=1&origin=" + location.origin)
+			if(isDesktop()&& integrar=="1"){
+				document.querySelector(".iframe").setAttribute("src","{{doc.url_escritorio}}&from_partent="+location.pathname+`&crsf_token={{doc.token}}&user={{user}}&origin=${location.origin}&integrar=1`)
+			}else{
+				document.querySelector(".iframe").setAttribute("src","{{doc.url_telefono}}&from_partent="+location.pathname+"&crsf_token={{doc.token}}&user={{user}}&integrar=1&origin="+location.origin)
 			}
 		</script>
 		
