@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:email",
+ "creation": "2024-05-08 11:40:26.476692",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "data",
+  "id",
+  "email",
+  "password",
+  "acceptedgdpr",
+  "aceeptedprivacy",
+  "acceptedtos",
+  "created",
+  "newsletter",
+  "logincount",
+  "lastlogin"
+ ],
+ "fields": [
+  {
+   "fieldname": "data",
+   "fieldtype": "Long Text",
+   "label": "data"
+  },
+  {
+   "fieldname": "id",
+   "fieldtype": "Data",
+   "label": "id"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "email",
+   "unique": 1
+  },
+  {
+   "fieldname": "password",
+   "fieldtype": "Data",
+   "label": "password"
+  },
+  {
+   "default": "0",
+   "fieldname": "acceptedgdpr",
+   "fieldtype": "Check",
+   "label": "acceptedGDPR"
+  },
+  {
+   "fieldname": "aceeptedprivacy",
+   "fieldtype": "Int",
+   "label": "aceeptedPrivacy",
+   "length": 22
+  },
+  {
+   "fieldname": "acceptedtos",
+   "fieldtype": "Int",
+   "label": "acceptedTOS",
+   "length": 22
+  },
+  {
+   "fieldname": "created",
+   "fieldtype": "Int",
+   "label": "created",
+   "length": 22
+  },
+  {
+   "default": "0",
+   "fieldname": "newsletter",
+   "fieldtype": "Check",
+   "label": "newsletter"
+  },
+  {
+   "fieldname": "logincount",
+   "fieldtype": "Int",
+   "label": "loginCount",
+   "length": 22
+  },
+  {
+   "fieldname": "lastlogin",
+   "fieldtype": "Int",
+   "label": "lastlogin",
+   "length": 22
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-05-08 20:44:55.577613",
+ "modified_by": "Administrator",
+ "module": "Builder Cross",
+ "name": "User buildhub",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -10,10 +10,14 @@
   "url_escritorio",
   "route",
   "es_dinamica",
+  "log_in",
+  "tiene_cuota",
+  "documento_de_cuota",
   "column_break_nrnl",
   "url_telefono",
   "integrar",
-  "token"
+  "token",
+  "full_mobile"
  ],
  "fields": [
   {
@@ -58,11 +62,36 @@
    "fieldname": "token",
    "fieldtype": "Data",
    "label": "token"
+  },
+  {
+   "default": "0",
+   "fieldname": "log_in",
+   "fieldtype": "Check",
+   "label": "Requiere iniciar Sesi\u00f3n"
+  },
+  {
+   "default": "0",
+   "fieldname": "tiene_cuota",
+   "fieldtype": "Check",
+   "label": "Tiene Cuota"
+  },
+  {
+   "depends_on": "eval:doc.tiene_cuota==1",
+   "fieldname": "documento_de_cuota",
+   "fieldtype": "Link",
+   "label": "Documento de cuota",
+   "options": "DocType"
+  },
+  {
+   "default": "0",
+   "fieldname": "full_mobile",
+   "fieldtype": "Check",
+   "label": "Version m\u00f3vil a pantalla completa"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-05 23:12:12.787255",
+ "modified": "2024-05-11 17:12:01.311770",
  "modified_by": "Administrator",
  "module": "Builder Cross",
  "name": "Buildhub Web",

@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-05-08 11:51:26.511305",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "data",
+  "id",
+  "userid",
+  "appid",
+  "permission"
+ ],
+ "fields": [
+  {
+   "fieldname": "data",
+   "fieldtype": "Long Text",
+   "label": "data"
+  },
+  {
+   "fieldname": "id",
+   "fieldtype": "Data",
+   "label": "id"
+  },
+  {
+   "fieldname": "userid",
+   "fieldtype": "Data",
+   "label": "userID"
+  },
+  {
+   "fieldname": "appid",
+   "fieldtype": "Data",
+   "label": "appId"
+  },
+  {
+   "fieldname": "permission",
+   "fieldtype": "Data",
+   "label": "permission"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-05-08 11:51:26.511305",
+ "modified_by": "Administrator",
+ "module": "Builder Cross",
+ "name": "Invitation Buildhub",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
