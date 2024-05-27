@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:id",
  "creation": "2024-05-08 11:48:05.233805",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -20,7 +21,8 @@
   {
    "fieldname": "id",
    "fieldtype": "Data",
-   "label": "id"
+   "label": "id",
+   "unique": 1
   },
   {
    "fieldname": "userid",
@@ -40,10 +42,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-08 11:49:12.779417",
+ "modified": "2024-05-24 17:30:30.889212",
  "modified_by": "Administrator",
  "module": "Builder Cross",
  "name": "Team BuildHub",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

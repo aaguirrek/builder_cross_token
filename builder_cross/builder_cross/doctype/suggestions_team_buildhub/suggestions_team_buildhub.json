@@ -1,8 +1,8 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:appid",
- "creation": "2024-05-08 11:51:26.511305",
+ "autoname": "field:id",
+ "creation": "2024-05-24 18:19:57.729357",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
@@ -21,7 +21,8 @@
   {
    "fieldname": "id",
    "fieldtype": "Data",
-   "label": "id"
+   "label": "id",
+   "unique": 1
   },
   {
    "fieldname": "userid",
@@ -31,8 +32,7 @@
   {
    "fieldname": "appid",
    "fieldtype": "Data",
-   "label": "appId",
-   "unique": 1
+   "label": "appId"
   },
   {
    "fieldname": "permission",
@@ -42,10 +42,10 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-24 17:21:07.505554",
+ "modified": "2024-05-24 18:19:57.729357",
  "modified_by": "Administrator",
  "module": "Builder Cross",
- "name": "Invitation Buildhub",
+ "name": "Suggestions Team BuildHub",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [

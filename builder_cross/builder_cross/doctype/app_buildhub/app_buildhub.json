@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:id",
  "creation": "2024-05-08 11:44:56.097217",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -19,7 +20,8 @@
   {
    "fieldname": "id",
    "fieldtype": "Data",
-   "label": "id"
+   "label": "id",
+   "unique": 1
   },
   {
    "fieldname": "nombre",
@@ -34,10 +36,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-08 11:45:22.480405",
+ "modified": "2024-05-24 17:16:41.147497",
  "modified_by": "Administrator",
  "module": "Builder Cross",
  "name": "App buildhub",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
