@@ -8,7 +8,9 @@
  "field_order": [
   "data",
   "id",
+  "user",
   "email",
+  "column_break_gwve",
   "password",
   "acceptedgdpr",
   "aceeptedprivacy",
@@ -22,17 +24,21 @@
   {
    "fieldname": "data",
    "fieldtype": "Long Text",
+   "hidden": 1,
    "label": "data"
   },
   {
    "fieldname": "id",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "id"
   },
   {
+   "fetch_from": "user.email",
    "fieldname": "email",
    "fieldtype": "Data",
    "label": "email",
+   "options": "email",
    "unique": 1
   },
   {
@@ -44,23 +50,27 @@
    "default": "0",
    "fieldname": "acceptedgdpr",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "acceptedGDPR"
   },
   {
    "fieldname": "aceeptedprivacy",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "aceeptedPrivacy",
    "length": 22
   },
   {
    "fieldname": "acceptedtos",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "acceptedTOS",
    "length": 22
   },
   {
    "fieldname": "created",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "created",
    "length": 22
   },
@@ -68,24 +78,38 @@
    "default": "0",
    "fieldname": "newsletter",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "newsletter"
   },
   {
    "fieldname": "logincount",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "loginCount",
    "length": 22
   },
   {
    "fieldname": "lastlogin",
    "fieldtype": "Int",
+   "hidden": 1,
    "label": "lastlogin",
    "length": 22
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_gwve",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-08 20:44:55.577613",
+ "modified": "2024-05-31 23:10:30.659826",
  "modified_by": "Administrator",
  "module": "Builder Cross",
  "name": "User buildhub",

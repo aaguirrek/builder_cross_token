@@ -127,13 +127,13 @@ website_route_rules = [
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
+doc_events = {
+	"User buildhub": {
+ 		"after_insert": "builder_cross.api.crear_user"
 # 		"on_cancel": "method",
 # 		"on_trash": "method"
-# 	}
-# }
+	}
+}
 
 # Scheduled Tasks
 # ---------------

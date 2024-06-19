@@ -24,6 +24,23 @@ Handle RESTful requests that are mapped to the `/api/resource` route.
 Requests via FrappeClient are also handled here.
 """
 
+def crear_user(doc,event=None):
+	return requests.post("https://build.frappecorp.com//rest/user",json={
+		"email": doc.email,
+        "password": doc.password,
+        "tos": 1
+		}).json()
+	
+
+
+@frappe.whitelist(allow_guest=True)
+def crear_usuario(email="a.velazco@evolutionsoluciones.com",pwd="3volution"):
+	return requests.post("https://build.frappecorp.com//rest/user",json={
+		"email": email,
+        "password": pwd,
+        "tos": 1
+		}).json()
+	
 
 @frappe.whitelist(allow_guest=True)
 def get_list(
