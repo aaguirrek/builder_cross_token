@@ -37,6 +37,8 @@ website_route_rules = [
 	{"from_route": "/page/<name>/<variable>", "to_route": "page"},
 	{"from_route": "/web/<name>", "to_route": "page2"},
 	{"from_route": "/web/<name>/<variable>", "to_route": "page2"},
+	{"from_route": "/site/<name>", "to_route": "bh"},
+	{"from_route": "/site/<name>/<variable>", "to_route": "bh"},
 ]
 # Svg Icons
 # ------------------

@@ -6,6 +6,8 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "plataforma",
+  "section_break_sask",
   "nombre",
   "url_escritorio",
   "route",
@@ -87,11 +89,21 @@
    "fieldname": "full_mobile",
    "fieldtype": "Check",
    "label": "Version m\u00f3vil a pantalla completa"
+  },
+  {
+   "fieldname": "plataforma",
+   "fieldtype": "Select",
+   "label": "Plataforma",
+   "options": "\napp.buildhub.pe\nbuild.frappecorp.com"
+  },
+  {
+   "fieldname": "section_break_sask",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-05-11 17:12:01.311770",
+ "modified": "2024-06-26 20:36:17.089305",
  "modified_by": "Administrator",
  "module": "Builder Cross",
  "name": "Buildhub Web",

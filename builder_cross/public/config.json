@@ -1,0 +1,15 @@
+{
+    "auth": "qux",
+    "websocket": "wss://ws.quant-ux.com",
+    "tos": "",
+    "sharedLibs": "",
+    "user": {
+        "allowSignUp": true,
+        "allowedDomains": "*"
+    },
+    "keycloak": {
+        "realm": "",
+        "clientId": "",
+        "url": ""
+    }
+}
