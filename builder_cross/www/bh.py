@@ -16,34 +16,42 @@ def get_context(context, **dict_params):
     variable = frappe.local.form_dict.variable
     websetting = frappe.get_doc("Website Settings", "Website Settings")
 
-    if variable != None:
-        docname = frappe.get_list(doctype='Buildhub Web',fields=["name"],filters=[["route","=","/"+name],["es_dinamica","=",1]])
-        if len(docname)==0:
-            docname = frappe.get_list(doctype='Buildhub Web',fields=["name"],filters=[["route","=",name],["es_dinamica","=",1]])
-        if len(docname)>0:
-            doc = frappe.get_doc("Buildhub Web",docname[0].name)
-    else:
-        docname = frappe.get_list(doctype='Buildhub Web',fields=["name"],filters=[["route","=","/"+name]])
-        if len(docname)==0:
-            docname = frappe.get_list(doctype='Buildhub Web',fields=["name"],filters=[["route","=",name]])
-        if len(docname)>0:
-            doc = frappe.get_doc("Buildhub Web",docname[0].name)
+    docname = frappe.get_list(doctype='Buildhub Web',fields=["name"],filters=[["route","=","/"+name]])
+    if len(docname)==0:
+        docname = frappe.get_list(doctype='Buildhub Web',fields=["name"],filters=[["route","=",name]])
+    if len(docname)>0:
+        doc = frappe.get_doc("Buildhub Web",docname[0].name)
 
     if len(docname)==0:
         frappe.throw(_("You need to be logged in to access this page"), frappe.PermissionError)
-    doc.url_escritorio
+    
     primary_desk=doc.url_escritorio.replace("https://",'')
     primary_desk=doc.url_escritorio.replace("&ln=en",'')
-    primary_desk=primary_desk.split("?h=")[1]
-    primary_cel=doc.url_escritorio.replace("https://",'')
-    primary_cel=doc.url_escritorio.replace("&ln=en",'')
-    primary_cel=primary_cel.split("?h=")[1]
+    if len(primary_desk.split("?h="))>1:
+        primary_desk=primary_desk.split("?h=")[1]
+    else:
+        primary_desk=primary_desk.split("?h=")[0]
+    
+    primary_cel=doc.url_telefono.replace("https://",'')
+    primary_cel=doc.url_telefono.replace("&ln=en",'')
+    if len(primary_cel.split("?h="))>1:
+        primary_cel=primary_cel.split("?h=")[1]
+    else:
+        primary_cel=primary_cel.split("?h=")[0]
+
     if doc.log_in==1:
         if frappe.session.user == "Guest":
             frappe.throw(_("You need to be logged in to access this page"), frappe.PermissionError)
     csrf_token = frappe.sessions.get_csrf_token()
     user = frappe.session.user
-
+    if variable != None:
+        context.param=variable
+    else:
+        context.param=''
+    if doc.tiene_preload:
+        context.preload=1
+    else:
+        context.preload=0
     context.csrf_token = csrf_token
     context.user_id = user
     context.title=doc.name

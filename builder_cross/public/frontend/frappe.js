@@ -259,6 +259,7 @@ function slugify(str)
 frappe.path=""
 frappe.param=""
 frappe.changepath=(id,name)=>{
+    param=name
     frappe.param=name
     frappe.path="/site/"+frappeVars.ruta+"/"+name
     window.history.pushState({screenid:id}, name, "/site/"+frappeVars.ruta+"/"+name);
