@@ -1,0 +1,40 @@
+[
+	{
+		"id": "Linkexternal",
+		"type": "LinkexternalWidget",
+		"_type": "Widget",
+		"category": "Advanced",
+		"subcategory": "AForm",
+		"name": "External Link",
+		"x": 0,
+		"y": 0,
+		"w": "@box-width-xl",
+		"h": "@box-height-xs",
+		"z": 0,
+		"props": {
+			"label": "Click Me",
+			"url":"https://erp.com",
+			"target":"blank"
+		},
+		"has": {
+			"data": true,
+			"onclick": true,
+			"label": true,
+			"padding": true,
+			"advancedText": true
+		},
+		"style": {
+			"textDecoration": "underline",
+			"fontSize": "@font-size-m",
+			"fontFamily": "@font-family",
+			"textAlign" : "left",
+			"letterSpacing": "@letterSpacin",
+			"lineHeight": "@lineHeight",
+			"color": "@label-color",
+			"textShadow": null
+		},
+		"hover": {
+			"color": "@label-color:hover"
+		}
+	}
+]

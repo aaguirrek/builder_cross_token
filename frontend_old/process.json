@@ -1,0 +1,24 @@
+{
+	"apps" : [{
+	   "name"   : "quantux",
+	   "script" : "./server/start.js",
+	   "restart_delay":300,
+	   "autorestart":true,
+	   "cron_restart":"*/30 * * * *",
+	   "host":"0.0.0.0",
+	   "max_memory_restart":"8000M",
+	   "env_production": {
+		  "NODE_ENV": "production"
+	   },
+	   "env_development": {
+		  "NODE_ENV": "development"
+	   }
+	 }],
+	 "deploy" : {
+	   "production" : {
+		  "user" : "frappe",
+		  "host" : ["0.0.0.0"]
+	   }
+	 }
+   }
+   

@@ -1,0 +1,41 @@
+[
+	{
+		"id": "HTMLData",
+		"type": "HTMLData",
+		"_type": "Widget",
+		"category": "WireFrame",
+		"subcategory": "XXXX",
+		"name": "HTML Data",
+		"x": 0,
+        "y": 0,
+        "w": "@box-width-l",
+        "h": "@form-height",
+        "z": 0,
+		"props": {
+			"label": "HTML Externo",
+			"data":"HTML Externo"
+		},
+		"has": {
+			"backgroundColor": true,
+            "border": true,
+			"label": true,
+			"padding": true
+		},
+		"style": {
+			"fontSize": "@font-size-m",
+			"fontFamily": "@font-family",
+			"textAlign": "left",
+			"letterSpacing": "@letterSpacing",
+			"lineHeight": "@lineHeight",
+			"verticalAlign": "middle",
+			"padding": 0,	
+			"borderRadius": "0",
+			"borderWidth": "@border-width",
+			"borderStyle": "solid",
+
+			"borderColor": "#000000",
+			"background": "#ffffff00",
+			"color": "#000000"	
+		}
+	}
+]
