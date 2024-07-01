@@ -165,7 +165,7 @@ export default {
     },
 
     _retireUser(d, dialog) {
-      Services.getUserService().retire(this.user); // this._doGet("https://backbuild.buildhub.pe/rest/retire");
+      Services.getUserService().retire(this.user); // this._doGet("https://v1.quant-ux.com/rest/retire");
       d.shake();
       dialog.innerHTML = this.getNLS("user.retire.cusoon");
       d.own(

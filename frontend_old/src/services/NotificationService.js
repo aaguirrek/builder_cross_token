@@ -31,8 +31,8 @@ class NotificationService extends AbstractService{
     }
 
     async getNotications () {
-        const notifications = await this._get('https://backbuild.buildhub.pe/rest/notifications.json')
-        const user = await this._get('https://backbuild.buildhub.pe/rest/user/' + this.user.id + '.json')
+        const notifications = await this._get('https://v1.quant-ux.com/rest/notifications.json')
+        const user = await this._get('https://v1.quant-ux.com/rest/user/' + this.user.id + '.json')
         this.addUserJourneyNotifications(notifications, user)
         notifications.forEach(n => {
             if (n.lastUpdate > user.lastNotification) {
@@ -113,11 +113,11 @@ class NotificationService extends AbstractService{
 
     setLastNotication () {
         this.flush()
-        return this._post('https://backbuild.buildhub.pe/rest/user/notification/last.json')
+        return this._post('https://v1.quant-ux.com/rest/user/notification/last.json')
     }
 
     getLastNotication () {
-        return this._get('https://backbuild.buildhub.pe/rest/user/notification/last.json')
+        return this._get('https://v1.quant-ux.com/rest/user/notification/last.json')
     }
 
 

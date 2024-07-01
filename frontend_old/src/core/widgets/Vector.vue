@@ -39,11 +39,11 @@ export default {
       var figmaImage = model.props.figmaImage;
       if (style.backgroundImage) {
         if (this.hash) {
-          this.backgroundImage = "url(https://backbuild.buildhub.pe/rest/images/" + this.hash + "/" + style.backgroundImage.url + ")";
+          this.backgroundImage = "url(https://v1.quant-ux.com/rest/images/" + this.hash + "/" + style.backgroundImage.url + ")";
         } else if (this.jwtToken) {
-          this.backgroundImage = "url(https://backbuild.buildhub.pe/rest/images/" + style.backgroundImage.url + "?token=" + this.jwtToken + ")";
+          this.backgroundImage = "url(https://v1.quant-ux.com/rest/images/" + style.backgroundImage.url + "?token=" + this.jwtToken + ")";
         } else {
-          this.backgroundImage = "url(https://backbuild.buildhub.pe/rest/images/" + style.backgroundImage.url + ")";
+          this.backgroundImage = "url(https://v1.quant-ux.com/rest/images/" + style.backgroundImage.url + ")";
         }
       } else if (figmaImage) {
         this.backgroundImage = `url(${figmaImage})`

@@ -159,9 +159,9 @@ export default {
     },
     requestUser() {
       console.debug("requestUser() > enter");
-      let u = this._doGet("https://backbuild.buildhub.pe/rest/user");
+      let u = this._doGet("https://v1.quant-ux.com/rest/user");
       this.user = u.role;
-      this._doGet("https://backbuild.buildhub.pe/rest/user", user => {
+      this._doGet("https://v1.quant-ux.com/rest/user", user => {
         this.user += " " + user.id;
       });
     },

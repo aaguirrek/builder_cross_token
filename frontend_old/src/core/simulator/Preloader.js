@@ -121,7 +121,7 @@ class Preloader {
     
     loadImage(box, hash, prio = 'high') {
         if(box.style && box.style.backgroundImage){
-            const url = "https://backbuild.buildhub.pe/rest/images/" + hash + "/"  + box.style.backgroundImage.url
+            const url = "https://v1.quant-ux.com/rest/images/" + hash + "/"  + box.style.backgroundImage.url
             if (!this.images.has(url)) {
                 const img = document.createElement("img");
                 //img.fetchpriority = prio

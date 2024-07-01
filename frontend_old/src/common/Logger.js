@@ -15,7 +15,7 @@ export default class Logger {
 		this.debugLevel = -1
 		this.serverDebugLevel = 2
 		this.prefix = null
-		this.url = "https://backbuild.buildhub.pe/rest/log/error"
+		this.url = "https://v1.quant-ux.com/rest/log/error"
 		this.className = className;
 	}
 

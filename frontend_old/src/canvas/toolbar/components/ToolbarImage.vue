@@ -182,7 +182,7 @@ export default {
 				this.uploader.destroy();
 			}
 
-			this.uploader = this.$new(Uploader, { size: 70, url: 'https://backbuild.buildhub.pe/rest/images/' + this.model.id, width: 2 });
+			this.uploader = this.$new(Uploader, { size: 70, url: 'https://v1.quant-ux.com/rest/images/' + this.model.id, width: 2 });
 			this.uploader.placeAt(add);
 			this.uploader.setMode(this.mode);
 			this.uploader.initFileDnD(this.popup);
@@ -201,7 +201,7 @@ export default {
 				} else {
 					css.add(div, "MatcImageUploadPreviewVertical");
 				}
-				div.style.backgroundImage = "url(https://backbuild.buildhub.pe/rest/images/" + data[i].url + "?token=" + this.jwtToken + ")";
+				div.style.backgroundImage = "url(https://v1.quant-ux.com/rest/images/" + data[i].url + "?token=" + this.jwtToken + ")";
 
 				if (this.imageIsSelected(data[i])) {
 					css.add(div, "MatcImageUploadPreviewSelected ");

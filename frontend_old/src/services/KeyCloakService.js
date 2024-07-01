@@ -63,7 +63,7 @@ class KeyCloakService extends AbstractService{
                   }
                   this.isInited = true
                   this.setUser(quxUser)
-                  await this._post('https://backbuild.buildhub.pe/rest/user/external', quxUser)
+                  await this._post('https://v1.quant-ux.com/rest/user/external', quxUser)
                   resolve()
                   
                   setInterval(async () => {
@@ -132,19 +132,19 @@ class KeyCloakService extends AbstractService{
     }
 
     async loadById (id) {
-        return await this._get('https://backbuild.buildhub.pe/rest/user/' + id + '.json')
+        return await this._get('https://v1.quant-ux.com/rest/user/' + id + '.json')
     }
 
     getNotications () {
-        return this._get('https://backbuild.buildhub.pe/rest/notifications.json')
+        return this._get('https://v1.quant-ux.com/rest/notifications.json')
     }
 
     setLastNotication () {
-        return this._post('https://backbuild.buildhub.pe/rest/user/notification/last.json')
+        return this._post('https://v1.quant-ux.com/rest/user/notification/last.json')
     }
 
     getLastNotication () {
-        return this._get('https://backbuild.buildhub.pe/rest/user/notification/last.json')
+        return this._get('https://v1.quant-ux.com/rest/user/notification/last.json')
     }
 
     getUser () {
@@ -235,7 +235,7 @@ class KeyCloakService extends AbstractService{
     }
 
     contact (name, email, message) {
-        return this._post("https://backbuild.buildhub.pe/rest/contact", {
+        return this._post("https://v1.quant-ux.com/rest/contact", {
             name: name,
             email: email,
             message: message
@@ -243,7 +243,7 @@ class KeyCloakService extends AbstractService{
     }
 
     deleteImage (user) {
-        return this._delete( "https://backbuild.buildhub.pe/rest/user/" + user.id + "/images/" + user.image);
+        return this._delete( "https://v1.quant-ux.com/rest/user/" + user.id + "/images/" + user.image);
     }
 
 }

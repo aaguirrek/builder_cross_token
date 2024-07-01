@@ -162,7 +162,7 @@ export default {
     },
     splashUrl () {
       if (this.test && this.test.splash) {
-        return 'https://backbuild.buildhub.pe/rest/images/' + this.hash + "/" + this.test.splash.url
+        return 'https://v1.quant-ux.com/rest/images/' + this.hash + "/" + this.test.splash.url
       }
       return ''
     },
@@ -197,7 +197,7 @@ export default {
       if (files.length === 1) {
           this.isUploading = true
           let file = files[0]
-          let url = 'https://backbuild.buildhub.pe/rest/images/' + this.app.id + '?resize=false';
+          let url = 'https://v1.quant-ux.com/rest/images/' + this.app.id + '?resize=false';
           let formData = new FormData();
 				  formData.append('file', file);
           let result = await this.imageService.upload(url, formData)

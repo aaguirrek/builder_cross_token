@@ -31,7 +31,7 @@ export default {
 			arrowPosition: "right",
 			mode: "private",
 			multiSelection: false,
-			urlPrefix: "https://backbuild.buildhub.pe/rest/images/",
+			urlPrefix: "https://v1.quant-ux.com/rest/images/",
 			jwtToken: 'notoken',
 			selection: [],
 			label: ''

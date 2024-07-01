@@ -61,7 +61,6 @@ if(frappeVars.from_partent ){
         }else{
         setTimeout(()=>{
             try{
-                document.querySelector("body").style.overflowY = "auto"
             }catch(e){}
         },500)
     }

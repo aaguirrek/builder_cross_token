@@ -1678,15 +1678,15 @@ export default class RenderFactory extends Core {
 				css.add(parent, "MatcScreenImageVertical");
 			}
 			if (this.hash) {
-				parent.style.backgroundImage = "url(https://backbuild.buildhub.pe/rest/images/" + this.hash + "/" + img.url + ")";
+				parent.style.backgroundImage = "url(https://v1.quant-ux.com/rest/images/" + this.hash + "/" + img.url + ")";
 			} else if (this.jwtToken) {
-				parent.style.backgroundImage = "url(https://backbuild.buildhub.pe/rest/images/" + img.url + "?token=" + this.jwtToken+ ")";
+				parent.style.backgroundImage = "url(https://v1.quant-ux.com/rest/images/" + img.url + "?token=" + this.jwtToken+ ")";
 			} else {
 				if (!this.isPublic) {
 					this.logger.warn('_set_backgroundImage', 'error > no token or hash')
 					this.logger.sendError(new Error('RenderFactgoryNoToken'))
 				}
-				parent.style.backgroundImage = "url(https://backbuild.buildhub.pe/rest/images/" + img.url + ")";
+				parent.style.backgroundImage = "url(https://v1.quant-ux.com/rest/images/" + img.url + ")";
 			}
 
 			if (style.backgroundSize) {

@@ -4,7 +4,7 @@
       
       <div :class="['MatcUserImageCntr ', {'MatcUserImageCntrTrans': user.image}]">
         <div v-if="user.image">
-          <img :src="'https://backbuild.buildhub.pe/rest/user/' + user.id + '/images/' + user.name + '_' + user.lastname + '/' + user.image"/>
+          <img :src="'https://v1.quant-ux.com/rest/user/' + user.id + '/images/' + user.name + '_' + user.lastname + '/' + user.image"/>
         </div>
          <div v-else class="MatcUserImageNone">
           <span class="MatcMiddle MatcUserLetters">

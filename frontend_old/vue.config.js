@@ -1,7 +1,7 @@
 var path = require('path');
 module.exports = {
-  publicPath: `/assets/builder_cross/frontend`,
-  outputDir: `../${path.basename(path.resolve('..'))}/public/frontend`,
+  publicPath: `/assets/builder_cross/frontend_old`,
+  outputDir: `../${path.basename(path.resolve('..'))}/public/frontend_old`,
   devServer: {
     proxy: {
       '^/rest': {

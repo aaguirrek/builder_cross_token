@@ -146,7 +146,7 @@
             },
             splashBackground () {
                 if (this.splashImage) {
-                      return `background-image: url(https://backbuild.buildhub.pe/rest/images/${this.hash}/${this.splashImage.url});`
+                      return `background-image: url(https://v1.quant-ux.com/rest/images/${this.hash}/${this.splashImage.url});`
                 }
                 return ''
             }

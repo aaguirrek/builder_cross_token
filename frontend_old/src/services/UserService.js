@@ -22,7 +22,7 @@ class UserService extends AbstractService{
     }
 
     async signup (data) {
-        return this._post('https://backbuild.buildhub.pe/rest/user', data)
+        return this._post('https://v1.quant-ux.com/rest/user', data)
     }
 
     async login (data) {
@@ -46,7 +46,7 @@ class UserService extends AbstractService{
     }
 
     reset (email) {
-        return this._post('https://backbuild.buildhub.pe/rest/user/password/request', {email: email})
+        return this._post('https://v1.quant-ux.com/rest/user/password/request', {email: email})
     }
 
     reset2 (email, password, token) {
@@ -55,12 +55,12 @@ class UserService extends AbstractService{
             password: password,
             key: token
         }
-        return this._post('https://backbuild.buildhub.pe/rest/user/password/set', data)
+        return this._post('https://v1.quant-ux.com/rest/user/password/set', data)
     }
 
     retire () {
         this.logger.info('retire()', 'enter > Oh oh')
-        return this._get('https://backbuild.buildhub.pe/rest/retire')
+        return this._get('https://v1.quant-ux.com/rest/retire')
     }
 
     load () {
@@ -93,19 +93,19 @@ class UserService extends AbstractService{
     }
 
     async loadById (id) {
-        return await this._get('https://backbuild.buildhub.pe/rest/user/' + id + '.json')
+        return await this._get('https://v1.quant-ux.com/rest/user/' + id + '.json')
     }
 
     getNotications () {
-        return this._get('https://backbuild.buildhub.pe/rest/notifications.json')
+        return this._get('https://v1.quant-ux.com/rest/notifications.json')
     }
 
     setLastNotication () {
-        return this._post('https://backbuild.buildhub.pe/rest/user/notification/last.json')
+        return this._post('https://v1.quant-ux.com/rest/user/notification/last.json')
     }
 
     getLastNotication () {
-        return this._get('https://backbuild.buildhub.pe/rest/user/notification/last.json')
+        return this._get('https://v1.quant-ux.com/rest/user/notification/last.json')
     }
 
     getUser () {
@@ -207,7 +207,7 @@ class UserService extends AbstractService{
     }
 
     contact (name, email, message) {
-        return this._post("https://backbuild.buildhub.pe/rest/contact", {
+        return this._post("https://v1.quant-ux.com/rest/contact", {
             name: name,
             email: email,
             message: message
@@ -215,7 +215,7 @@ class UserService extends AbstractService{
     }
 
     deleteImage (user) {
-        return this._delete( "https://backbuild.buildhub.pe/rest/user/" + user.id + "/images/" + user.image);
+        return this._delete( "https://v1.quant-ux.com/rest/user/" + user.id + "/images/" + user.image);
     }
 
 }

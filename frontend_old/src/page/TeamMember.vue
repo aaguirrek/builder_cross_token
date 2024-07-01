@@ -35,7 +35,7 @@
         },
         getUserImage (user) {
             if (user) {
-                return "https://backbuild.buildhub.pe/rest/user/" + user.id + "/images/" + user.name + "_" + user.lastname + "/" + user.image
+                return "https://v1.quant-ux.com/rest/user/" + user.id + "/images/" + user.name + "_" + user.lastname + "/" + user.image
             }
             return ""
         },

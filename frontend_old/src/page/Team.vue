@@ -52,7 +52,7 @@ export default {
 },
   methods: {
     getUserImage (user) {
-      return "https://backbuild.buildhub.pe/rest/user/" + user.id + "/images/" + user.name + "_" + user.lastname + "/" + user.image
+      return "https://v1.quant-ux.com/rest/user/" + user.id + "/images/" + user.name + "_" + user.lastname + "/" + user.image
     },
     postCreate () {
       this.logger = new Logger("Team");
@@ -243,7 +243,7 @@ export default {
       );
 
       this.isSaving = false;
-      // var result = this._doPost("https://backbuild.buildhub.pe/rest/apps/" +this.appID + "/team/", user);
+      // var result = this._doPost("https://v1.quant-ux.com/rest/apps/" +this.appID + "/team/", user);
       if (result.type == "error") {
         if (result.errors[0] == "apps.team.member.add.error.email") {
           css.remove(error, "");
@@ -271,13 +271,13 @@ export default {
     async setPermission(permisson, user) {
       user.permission = permisson;
       await Services.getModelService().createTeam(this.appID, user);
-      // this._doPost("https://backbuild.buildhub.pe/rest/apps/" +this.appID + "/team/", user);
+      // this._doPost("https://v1.quant-ux.com/rest/apps/" +this.appID + "/team/", user);
       this.load();
     },
 
     async removeUser(user, radio, dialog) {
       await Services.getModelService().deleteTeam(this.appID, user);
-      // this._doDelete("https://backbuild.buildhub.pe/rest/apps/" +this.appID + "/team/" +  user.id + ".json");
+      // this._doDelete("https://v1.quant-ux.com/rest/apps/" +this.appID + "/team/" +  user.id + ".json");
       dialog.close();
       radio.destroy();
       this.load();

@@ -5,7 +5,7 @@
         </div>
         <template v-else>
             <img v-if="user.image" class="MatcUserImage"
-                :src="'https://backbuild.buildhub.pe/rest/user/' + user.id + '/images/' + user.name + '_' + user.lastname + '/' + user.image" />
+                :src="'https://v1.quant-ux.com/rest/user/' + user.id + '/images/' + user.name + '_' + user.lastname + '/' + user.image" />
             <div class="MatcUserAvatar" v-else>
                 {{ getUserLetter(user) }}
             </div>

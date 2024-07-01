@@ -1240,15 +1240,15 @@ export default {
           css.add(parent, "MatcScreenImageVertical");
         }
         if (this.hash) {
-          parent.style.backgroundImage = "url(https://backbuild.buildhub.pe/rest/images/" + this.hash + "/" + img.url + ")";
+          parent.style.backgroundImage = "url(https://v1.quant-ux.com/rest/images/" + this.hash + "/" + img.url + ")";
         } else if (this.jwtToken) {
-          parent.style.backgroundImage = "url(https://backbuild.buildhub.pe/rest/images/" + img.url + "?token=" + this.jwtToken + ")";
+          parent.style.backgroundImage = "url(https://v1.quant-ux.com/rest/images/" + img.url + "?token=" + this.jwtToken + ")";
         } else {
           this.logger.warn('_set_backgroundImageInNode', 'error > no token or hash')
           if (!this.isPublic) {
             this.logger.sendError(new Error('No hash for image'))
           }
-          const url = "url(https://backbuild.buildhub.pe/rest/images/" + img.url + ")";
+          const url = "url(https://v1.quant-ux.com/rest/images/" + img.url + ")";
           parent.style.backgroundImage = url;
         }
 

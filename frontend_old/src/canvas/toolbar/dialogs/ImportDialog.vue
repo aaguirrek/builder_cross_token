@@ -415,7 +415,7 @@ export default {
             let total = vectorWidgets.length * 2;
             let done = 0
             let imageService = Services.getImageService()
-            let url = 'https://backbuild.buildhub.pe/rest/images/' + this.model.id;
+            let url = 'https://v1.quant-ux.com/rest/images/' + this.model.id;
             let promisses = vectorWidgets.map(widget => {
                 let figmaImage = widget.props.figmaImage
                 this.logger.log(-1, 'downloadFigmaImages', 'enter', figmaImage)
@@ -468,7 +468,7 @@ export default {
                 return
             }
 
-		    let url = 'https://backbuild.buildhub.pe/rest/images/' + this.model.id;
+		    let url = 'https://v1.quant-ux.com/rest/images/' + this.model.id;
             let imageService = Services.getImageService()
             let promisses = this.uploadFiles.map((file, i) => {
                 var formData = new FormData();

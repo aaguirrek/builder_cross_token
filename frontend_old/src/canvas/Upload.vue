@@ -184,14 +184,14 @@ export default {
 				/**
 				 * Sketch (new and legacy) has different URL
 				 */
-				var url = 'https://backbuild.buildhub.pe/rest/images/' + this.model.id;
+				var url = 'https://v1.quant-ux.com/rest/images/' + this.model.id;
 				if(file.name.endsWith("qux")){
 					let pos2 = this.getUnZoomedBox(pos, this.zoom, this.zoom);
-					url = 'https://backbuild.buildhub.pe/rest/import/sketch/' + this.model.id + "?x="+pos2.x + "&y=" + pos2.y;
+					url = 'https://v1.quant-ux.com/rest/import/sketch/' + this.model.id + "?x="+pos2.x + "&y=" + pos2.y;
 				}
 				if(file.name.endsWith("sketch")){
 					let pos2 = this.getUnZoomedBox(pos, this.zoom, this.zoom);
-					url = 'https://backbuild.buildhub.pe/rest/import/sketch2/' + this.model.id + "?x="+pos2.x + "&y=" + pos2.y;
+					url = 'https://v1.quant-ux.com/rest/import/sketch2/' + this.model.id + "?x="+pos2.x + "&y=" + pos2.y;
 				}
 
 				let imageService = Services.getImageService()

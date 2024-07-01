@@ -387,10 +387,10 @@ export default {
 
 			if (valid) {
 
-				var result = await Services.getUserService().signup(data)// this._doPost("https://backbuild.buildhub.pe/rest/user", data);
+				var result = await Services.getUserService().signup(data)// this._doPost("https://v1.quant-ux.com/rest/user", data);
 
 				if (!result) {
-					var error = new Error("createUser() > Could not send data to https://backbuild.buildhub.pe/rest/user");
+					var error = new Error("createUser() > Could not send data to https://v1.quant-ux.com/rest/user");
 					this.log.error("createUser", "Could not load REST API");
 					this.log.sendError(error);
 					form.showError("Something went wrong! Please contact klaus.schaefers[at]quant-ux.com", "");
@@ -692,7 +692,7 @@ export default {
 			var pos = this.controller.commandStack.pos;
 
 
-			var team = await Services.getModelService(this.$route).findTeam(this.model.id) //this._doGet("https://backbuild.buildhub.pe/rest/apps/" + this.model.id +"/team.json");
+			var team = await Services.getModelService(this.$route).findTeam(this.model.id) //this._doGet("https://v1.quant-ux.com/rest/apps/" + this.model.id +"/team.json");
 			var users = this.getObjectFromArray(team, "id");
 
 			var tblCntr = db.div("MatcDialogTable").build(cntr);

@@ -60,7 +60,7 @@ export default {
       return this.user && this.user.image
     },
     userImage () {
-      return 'https://backbuild.buildhub.pe/rest/user/' + this.user.id + '/images/' + this.user.name + '_' + this.user.lastname + '/' + this.user.image
+      return 'https://v1.quant-ux.com/rest/user/' + this.user.id + '/images/' + this.user.name + '_' + this.user.lastname + '/' + this.user.image
     }
   },
   methods: {

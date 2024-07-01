@@ -281,7 +281,7 @@ export default {
 
 				let image = document.createElement('img')
 				css.add(image, 'MatcCanvasMouseImage')
-				image.src = "https://backbuild.buildhub.pe/rest/user/" + user.id + "/images/" + user.name + "_" + user.lastname + "/" + user.image;
+				image.src = "https://v1.quant-ux.com/rest/user/" + user.id + "/images/" + user.name + "_" + user.lastname + "/" + user.image;
 				cntr.appendChild(image)
 			} else {
 				let label = document.createElement('div')

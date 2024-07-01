@@ -9,7 +9,7 @@ class ImageService extends AbstractService {
   }
 
   delete (model, image) {
-    return this._delete("https://backbuild.buildhub.pe/rest/images/" + model.id + "/" + image.id + "/" + image.url)
+    return this._delete("https://v1.quant-ux.com/rest/images/" + model.id + "/" + image.id + "/" + image.url)
   }
 
   upload (url, formData, progressHandler) {

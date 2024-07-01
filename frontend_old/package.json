@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build  && yarn copy-html-entry",
-    "copy-html-entry": "mv ../builder_cross/public/frontend/index.html ../builder_cross/www/bh.html",
+    "copy-html-entry": "mv ../builder_cross/public/frontend_old/index.html ../builder_cross/www/bh_old.html",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "start": "node server/start.js"

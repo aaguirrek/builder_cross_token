@@ -127,7 +127,7 @@ export default {
 
       uploadImage (repository, image) {
         return new Promise((resolve, reject) => {
-            let url = `https://backbuild.buildhub.pe/rest/images/${image.url}?token=${this.jwtToken}`
+            let url = `https://v1.quant-ux.com/rest/images/${image.url}?token=${this.jwtToken}`
             this.logger.log(-1, 'uploadImage', 'enter', url)
             fetch(url).then(response => response.blob().then(blob => {
               console.debug(blob)

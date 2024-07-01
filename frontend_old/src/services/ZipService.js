@@ -23,7 +23,7 @@ class ZipService {
         let images = this.getImages(model)
         for (let i=0; i < images.length; i++) {
           let image = images[i]
-          let url = `https://backbuild.buildhub.pe/rest/images/${image.url}?token=${jwtToken}`
+          let url = `https://v1.quant-ux.com/rest/images/${image.url}?token=${jwtToken}`
           try {
    
             let imgData = await this.getBlob(url)
@@ -110,7 +110,7 @@ class ZipService {
       try {
 
         let JSZip = await import(/* webpackChunkName: "jszip" */ 'jszip')
-        let url = 'https://backbuild.buildhub.pe/rest/images/' + modelId;
+        let url = 'https://v1.quant-ux.com/rest/images/' + modelId;
 
         let zip = new JSZip.default();
         await zip.loadAsync(file)

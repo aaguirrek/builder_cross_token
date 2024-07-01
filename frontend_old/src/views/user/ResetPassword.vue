@@ -97,7 +97,7 @@ export default {
   methods: {
     async reset() {
 		this.log.log(0, "reset", "entry");
-		var result = await Services.getUserService().reset(this.email) //this._doPost("https://backbuild.buildhub.pe/rest/user/password/request", data);
+		var result = await Services.getUserService().reset(this.email) //this._doPost("https://v1.quant-ux.com/rest/user/password/request", data);
 		if (result.status == "ok") {
 			this.showSuccess('You got mail')
 			this.page = 2
@@ -112,7 +112,7 @@ export default {
 		if (this.password1 !== this.password2) {
 			this.error = "The password do not match!"
 		} else {  
-			var result = await Services.getUserService().reset2(this.email, this.password1, this.token); //this._doPost("https://backbuild.buildhub.pe/rest/user/password/set", data);
+			var result = await Services.getUserService().reset2(this.email, this.password1, this.token); //this._doPost("https://v1.quant-ux.com/rest/user/password/set", data);
 			if (result.status == "ok") {
 				this.showSuccess('Great, your new password is set. You can loggin now')
 				this.page = 4  

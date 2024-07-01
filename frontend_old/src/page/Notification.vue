@@ -154,7 +154,7 @@ export default {
 					delete this.bubble;
 				}
 				Services.getUserService().setLastNotication()
-				// this._doPost("https://backbuild.buildhub.pe/rest/user/notification/last.json", {});
+				// this._doPost("https://v1.quant-ux.com/rest/user/notification/last.json", {});
 			},
 
 			onTimestampUpdate  (){

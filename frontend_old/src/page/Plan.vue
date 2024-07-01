@@ -71,7 +71,7 @@ export default {
         if (max < 0) {
           return true;
         }
-        var stats = this._doGet("https://backbuild.buildhub.pe/rest/user/plan/consumption.json");
+        var stats = this._doGet("https://v1.quant-ux.com/rest/user/plan/consumption.json");
         if (stats) {
           return stats.appOwner < max;
         }

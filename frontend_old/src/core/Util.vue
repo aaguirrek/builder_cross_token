@@ -600,7 +600,7 @@ export default {
         css.add(imgCntr, "MatcUserImageCntrTrans");
 
         let img = document.createElement("img");
-        img.src = "https://backbuild.buildhub.pe/rest/user/" + user.id + "/images/" + user.name + "_" + user.lastname + "/" + user.image;
+        img.src = "https://v1.quant-ux.com/rest/user/" + user.id + "/images/" + user.name + "_" + user.lastname + "/" + user.image;
         css.add(img, "MatcUserImage");
         imgCntr.appendChild(img);
       } else {

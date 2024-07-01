@@ -332,16 +332,16 @@ export default {
       if (element) {
         if (image) {
           if (this.hash) {
-            let url = "url(https://backbuild.buildhub.pe/rest/images/" + this.hash + "/" + image + ")";
+            let url = "url(https://v1.quant-ux.com/rest/images/" + this.hash + "/" + image + ")";
             element.style.backgroundImage = url
           } else if (this.jwtToken) {
-            let url = "url(https://backbuild.buildhub.pe/rest/images/" + image + "?token=" + this.jwtToken + ")";
+            let url = "url(https://v1.quant-ux.com/rest/images/" + image + "?token=" + this.jwtToken + ")";
             element.style.backgroundImage = url;
           } else {
             if (!this.isPublic) {
               this.logger.warn('setImage', 'error > no token or hash')
             }
-            let url = "url(https://backbuild.buildhub.pe/rest/images/" + image + ")";
+            let url = "url(https://v1.quant-ux.com/rest/images/" + image + ")";
             element.style.backgroundImage = url;
           }
         } else {
