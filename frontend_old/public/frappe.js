@@ -166,8 +166,7 @@ frappe.call = (data)=>{
     if(data.nosync===true){
         api.onreadystatechange = function() {
             if (this.readyState == 4 ) {
-                    console.log(data.callback)
-                    data.callback({status:this.status, ...JSON.parse(api.responseText)})
+                   data.callback({status:this.status, ...JSON.parse(api.responseText)})
             }
         }
         api.send( JSON.stringify(data.args) );

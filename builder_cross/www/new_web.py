@@ -56,14 +56,11 @@ def get_context(context, **dict_params):
         context.preload=1
     else:
         context.preload=0
-    if doc.header_y_footer_del_erp:
-        context.header=1
-    else:
-        context.header=0
     context.doma=domain
     context.csrf_token = csrf_token
     context.user_id = user
     context.title=doc.name
+    context.doc = doc
     context.primary_desk=primary_desk
     context.primary_cel=primary_cel
     context.ruta=doc.route.replace("/",'')

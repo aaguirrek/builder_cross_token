@@ -19,7 +19,8 @@
   "integrar",
   "token",
   "full_mobile",
-  "tiene_preload"
+  "tiene_preload",
+  "header_y_footer_del_erp"
  ],
  "fields": [
   {
@@ -99,11 +100,17 @@
    "fieldname": "tiene_preload",
    "fieldtype": "Check",
    "label": "tiene preload"
+  },
+  {
+   "default": "0",
+   "fieldname": "header_y_footer_del_erp",
+   "fieldtype": "Check",
+   "label": "header y footer del erp"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-06-26 21:40:10.738319",
+ "modified": "2024-07-02 09:58:57.144251",
  "modified_by": "Administrator",
  "module": "Builder Cross",
  "name": "Buildhub Web",

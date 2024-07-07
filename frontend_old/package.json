@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build  && yarn copy-html-entry",
+    "build": "vue-cli-service build",
+    "_comentario":"build: vue-cli-service build  && yarn copy-html-entry",    
     "copy-html-entry": "mv ../builder_cross/public/frontend_old/index.html ../builder_cross/www/bh_old.html",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",

@@ -1,3 +1,106 @@
+{%if header == 1%}
+
+{% extends "templates/web.html" %}
+{% block head_include %}
+<title>{{title}}</title>
+        
+<style>
+	body,
+	html {
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+
+	main.container {
+		margin: 0 !important;
+		padding: 0 !important;
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+		width: 100% !important;
+		max-width: unset;
+
+	}
+	#page-bh{
+                margin-top: -70px!important;}
+
+	.web-footer {
+		margin-top: 0;
+		border-top: none;
+	}
+	#navbarSupportedContent{
+		visibility: visible;
+	}
+</style>
+<script>
+</script>
+
+<script>window.frappe = {};
+	frappe.param = "{{param}}";
+	frappe.init_route = "{{param}}";
+	//"{{doma}}"
+	frappe.preload = "{{preload}}"
+	let frappeVars = { from_partent: null, integrar: '0' }
+        frappeVars.allow_change_path=1;
+        </script>
+<meta name="description"
+	content="Builder is the prototyping tool for Design Sprints and Design Thinking. Design, Test and Learn in one tool!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto:wght@300;400;700&family=Source+Sans+3:wght@300;400;700&display=swap"
+	rel="stylesheet">
+<style>
+	.MatcWidgetTypeRepeaterGrid.rows .MatcWidgetTypeRepeaterElement {
+			width: 100% !important;
+	}
+
+	body {
+			overflow-y: hidden;
+			background: transparent !important;
+			background-color: transparent !important;
+	}
+</style>
+
+<script>const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
+	frappe.csrf_token = "{{csrf_token}}";
+	frappeVars.user = "{{user_id}}";
+	if (isMobile) {
+			frappeVars.h = "{{primary_cel}}";
+	} else {
+			frappeVars.h = "{{primary_desk}}";
+	}
+	frappeVars.ruta = "{{ruta}}";
+	frappeVars.origin = location.origin;</script>
+
+{% if doma == "build.frappecorp.com" %}
+<script defer="defer" src="/assets/builder_cross/frontend/js/chunk-vendors.3007f410.js" type="module"></script>
+<script defer="defer" src="/assets/builder_cross/frontend/js/app.7374c3dd.js" type="module"></script>
+<link href="/assets/builder_cross/frontend/css/app.afae71e0.css" rel="stylesheet">
+<script defer="defer" src="/assets/builder_cross/frontend/js/chunk-vendors-legacy.0a939328.js" nomodule></script>
+<script defer="defer" src="/assets/builder_cross/frontend/js/app-legacy.4fd1d814.js" nomodule></script>
+
+{% else %}        
+<script defer="defer" src="/assets/builder_cross/frontend_old/js/chunk-vendors.3007f410.js" type="module"></script>
+<script defer="defer" src="/assets/builder_cross/frontend_old/js/app.b93468a9.js" type="module"></script>
+<link href="/assets/builder_cross/frontend_old/css/app.996bb2a1.css" rel="stylesheet">
+<script defer="defer" src="/assets/builder_cross/frontend_old/js/chunk-vendors-legacy.7c0521c4.js" nomodule></script>
+<script defer="defer" src="/assets/builder_cross/frontend_old/js/app-legacy.247eb7e6.js" nomodule></script>
+{% endif %}
+{% endblock %}
+{% block page_content %}
+<noscript><strong>We're sorry but Builder doesn't work properly without JavaScript
+                enabled. Please enable it to continue.</strong></noscript>
+<div id="app"></div>
+
+
+<div class="footer_one"></div>
+
+
+<script> loaded() </script>
+{% endblock %}
+{%- block body_include %}
+<script src="/assets/builder_cross/frontend/frappe.js"></script>{% endblock -%}
+
+{%else%}
 <!doctype html>
 <html lang="en">
 
@@ -38,13 +141,18 @@
         <script src="/assets/builder_cross/frontend/frappe.js"></script>
         <script>const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
                 frappe.csrf_token = "{{csrf_token}}";
+                {% if user_id != None %}
                 frappeVars.user = "{{user_id}}";
+                {%else %}
+                frappeVars.user = "Guest";
+                {% endif %}
                 if (isMobile) {
                         frappeVars.h = "{{primary_cel}}";
                 } else {
                         frappeVars.h = "{{primary_desk}}";
                 }
                 frappeVars.ruta = "{{ruta}}";
+                frappeVars.allow_change_path=0;
                 frappeVars.origin = location.origin;</script>
 
         {% if doma == "build.frappecorp.com" %}
@@ -72,3 +180,4 @@
 
 <div class="footer_one"></div>
 </html>
+{%endif%}
