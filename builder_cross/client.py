@@ -47,7 +47,7 @@ def get_list(
 	:param order_by: Order by this fieldname
 	:param limit_start: Start at this index
 	:param limit_page_length: Number of records to be returned (default 20)"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	if frappe.is_table(doctype):
 		check_parent_permission(parent, doctype)
@@ -72,7 +72,7 @@ def get_list(
 
 @frappe.whitelist()
 def get_count(doctype, filters=None, debug=False, cache=False,user="Guest"):
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	return frappe.db.count(doctype, get_safe_filters(filters), debug, cache)
 
@@ -84,7 +84,7 @@ def get(doctype, name=None, filters=None, parent=None, user="Guest"):
 	:param doctype: DocType of the document to be returned
 	:param name: return document of this `name`
 	:param filters: If name is not set, filter by these values and return the first match"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	if frappe.is_table(doctype):
 		check_parent_permission(parent, doctype)
@@ -112,7 +112,7 @@ def get_value(
 	:param doctype: DocType to be queried
 	:param fieldname: Field to be returned (default `name`)
 	:param filters: dict or string for identifying the record"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	if frappe.is_table(doctype):
 		check_parent_permission(parent, doctype)
@@ -159,7 +159,7 @@ def get_value(
 
 @frappe.whitelist()
 def get_single_value(doctype, field,user="Guest"):
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	if not frappe.has_permission(doctype):
 		frappe.throw(_("No permission for {0}").format(_(doctype)), frappe.PermissionError)
@@ -175,7 +175,7 @@ def set_value(doctype, name, fieldname, value=None,user="Guest"):
 	:param name: name of the document
 	:param fieldname: fieldname string or JSON / dict with key value pair
 	:param value: value if fieldname is JSON / dict"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	if fieldname in (frappe.model.default_fields + frappe.model.child_table_fields):
 		frappe.throw(_("Cannot edit standard fields"))
@@ -210,7 +210,7 @@ def insert(doc=None,user="Guest"):
 	"""Insert a document
 
 	:param doc: JSON or dict object to be inserted"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	if isinstance(doc, str):
 		doc = json.loads(doc)
@@ -223,7 +223,7 @@ def insert_many(docs=None,user="Guest"):
 	"""Insert multiple documents
 
 	:param docs: JSON or list of dict objects to be inserted in one request"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	if isinstance(docs, str):
 		docs = json.loads(docs)
@@ -239,7 +239,7 @@ def save(doc,user="Guest"):
 	"""Update (save) an existing document
 
 	:param doc: JSON or dict object with the properties of the document to be updated"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	if isinstance(doc, str):
 		doc = json.loads(doc)
@@ -257,7 +257,7 @@ def rename_doc(doctype, old_name, new_name, merge=False,user="Guest"):
 	:param doctype: DocType of the document to be renamed
 	:param old_name: Current `name` of the document to be renamed
 	:param new_name: New `name` to be set"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	new_name = frappe.rename_doc(doctype, old_name, new_name, merge=merge)
 	return new_name
@@ -268,7 +268,7 @@ def submit(doc,user="Guest"):
 	"""Submit a document
 
 	:param doc: JSON or dict object to be submitted remotely"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	if isinstance(doc, str):
 		doc = json.loads(doc)
@@ -285,7 +285,7 @@ def cancel(doctype, name,user="Guest"):
 
 	:param doctype: DocType of the document to be cancelled
 	:param name: name of the document to be cancelled"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	wrapper = frappe.get_doc(doctype, name)
 	wrapper.cancel()
@@ -299,7 +299,7 @@ def delete(doctype, name,user="Guest"):
 
 	:param doctype: DocType of the document to be deleted
 	:param name: name of the document to be deleted"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	delete_doc(doctype, name)
 
@@ -332,7 +332,7 @@ def has_permission(doctype, docname, perm_type="read",user="Guest"):
 	:param docname: `name` of the document to be checked
 	:param perm_type: one of `read`, `write`, `create`, `submit`, `cancel`, `report`. Default is `read`"""
 	# perm_type can be one of read, write, create, submit, cancel, report
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	return {"has_permission": frappe.has_permission(doctype, perm_type.lower(), docname)}
 
@@ -344,7 +344,7 @@ def get_doc_permissions(doctype, docname,user="Guest"):
 	:param doctype: DocType of the document to be evaluated
 	:param docname: `name` of the document to be evaluated
 	"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	doc = frappe.get_doc(doctype, docname)
 	return {"permissions": frappe.permissions.get_doc_permissions(doc)}
@@ -358,7 +358,7 @@ def get_password(doctype, name, fieldname,user="Guest"):
 	:param name: `name` of the document that holds the password
 	:param fieldname: `fieldname` of the password property
 	"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	frappe.only_for("System Manager")
 	return frappe.get_doc(doctype, name).get_password(fieldname)
@@ -371,7 +371,7 @@ def get_js(items,user="Guest"):
 	and extend `frappe._messages`
 
 	:param items: JSON list of paths of the js files to be loaded."""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	items = json.loads(items)
 	out = []
@@ -393,7 +393,7 @@ def get_js(items,user="Guest"):
 @frappe.whitelist(allow_guest=True)
 def get_time_zone(user="Guest"):
 	"""Returns default time zone"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	return {"time_zone": frappe.defaults.get_defaults().get("time_zone")}
 
@@ -420,7 +420,7 @@ def attach_file(
 	:param decode_base64: decode filedata from base64 encode, default is False
 	:param is_private: Attach file as private file (1 or 0)
 	:param docfield: file to attach to (optional)"""
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	doc = frappe.get_doc(doctype, docname)
 	doc.check_permission()
@@ -448,7 +448,7 @@ def attach_file(
 
 @frappe.whitelist()
 def is_document_amended(doctype, docname,user="Guest"):
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	if frappe.permissions.has_permission(doctype):
 		try:
@@ -461,7 +461,7 @@ def is_document_amended(doctype, docname,user="Guest"):
 
 @frappe.whitelist()
 def validate_link(doctype: str, docname: str, fields=None,user="Guest"):
-	if not user is None:
+	if user != None and user != 'None':
 		frappe.set_user(user)
 	if not isinstance(doctype, str):
 		frappe.throw(_("DocType must be a string"))

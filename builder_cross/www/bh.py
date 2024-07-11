@@ -10,7 +10,7 @@ from frappe import _
 
 
 sitemap = 1
-no_cache = 1
+no_cache = 0
 def get_context(context, **dict_params):
     frappe.local.form_dict.update(dict_params)
     name = frappe.local.form_dict.name
@@ -62,6 +62,7 @@ def get_context(context, **dict_params):
         context.header=0
     context.doma=domain
     context.csrf_token = csrf_token
+    context.full_mobile = doc.full_mobile
     context.user_id = user
     context.title=doc.name
     context.primary_desk=primary_desk

@@ -30,6 +30,14 @@
 	#navbarSupportedContent{
 		visibility: visible;
 	}
+        {% if full_mobile == 1 %}
+        @media only screen and (max-width: 768px) {
+                nav.navbar,footer.web-footer{
+                        display: none!important;
+                }
+
+        }
+        {% endif %}
 </style>
 <script>
 </script>
