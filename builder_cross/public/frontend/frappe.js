@@ -121,14 +121,7 @@ frappe.call = (data)=>{
     
     if(data.method.startsWith('client')){
         data.method=`builder_cross.${data.method}`
-        if(data.auth){
-            data.args.user="Administrator"
-        }else{
-            if(data.user===undefined){
-                data.args.user=frappeVars.user
-            }
-
-        }
+        
         if(data.method=="builder_cross.client.upload"){
                 data.method="builder_cross.client.attach_file"
                 const xhttp = new XMLHttpRequest();

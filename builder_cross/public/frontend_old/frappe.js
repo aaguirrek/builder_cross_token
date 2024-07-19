@@ -61,7 +61,6 @@ if(frappeVars.from_partent ){
         }else{
         setTimeout(()=>{
             try{
-                document.querySelector("body").style.overflowY = "auto"
             }catch(e){}
         },500)
     }
@@ -80,9 +79,8 @@ if(frappeVars.from_partent ){
 frappe.inject=(name) =>{
     const xhttp = new XMLHttpRequest();
     xhttp.open("POST", `${frappeVars.origin}/api/method/get`, false);
-    // xhttp.setRequestHeader("Authorization", "Basic " + frappeVars.crsf_token);
-    api.setRequestHeader('x-frappe-csrf-token',frappe.csrf_token)
-    api.send( {doctype:"Javascript Archivos",name:name} );
+    xhttp.setRequestHeader('x-frappe-csrf-token',frappe.csrf_token)
+    xhttp.send( {doctype:"Javascript Archivos",name:name} );
     let e = JSON.parse(api.responseText);
     return  e.message.codigo;
 
@@ -101,7 +99,7 @@ frappe.call = (data)=>{
     if(data.method=="upload_file"||data.method=="upload"){
         data.method="upload_file"
         let form_data = new FormData();
-        form_data.append('file', data.args.file, data.args.file.name);
+        form_data.append('file', data.args.file, data.args.file.name!==undefined?data.args.file.name:"filename");
         if(data.args.doctype!==undefined){
             form_data.append('doctype',data.args.doctype)
         }
@@ -113,8 +111,7 @@ frappe.call = (data)=>{
         let url = `${origin}/api/method/${data.method}`
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open( "POST", url, false );
-        // xhttp.setRequestHeader("Authorization", "Basic " + frappeVars.crsf_token);
-        api.setRequestHeader('x-frappe-csrf-token',frappe.csrf_token)
+        xmlHttp.setRequestHeader('x-frappe-csrf-token',frappe.csrf_token)
         xmlHttp.send( form_data );
         let e = JSON.parse(xmlHttp.responseText);
         e.status = xmlHttp.status
@@ -137,8 +134,7 @@ frappe.call = (data)=>{
                 const xhttp = new XMLHttpRequest();
 
                 xhttp.open("POST", `${origin}/api/method/${data.method}`, data.nosync);
-                //xhttp.setRequestHeader("Authorization", "Basic " + tk);
-                api.setRequestHeader('x-frappe-csrf-token',frappe.csrf_token)
+                xhttp.setRequestHeader('x-frappe-csrf-token',frappe.csrf_token)
                 
                 if(data.nosync===true){
                     xhttp.onreadystatechange = function() {
@@ -161,7 +157,6 @@ frappe.call = (data)=>{
     let api = new XMLHttpRequest();
     api.open( "POST", url, data.nosync );
     api.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    //  api.setRequestHeader('Authorization','Basic '+tk)
     api.setRequestHeader('x-frappe-csrf-token',frappe.csrf_token)
     if(data.nosync===true){
         api.onreadystatechange = function() {
@@ -262,7 +257,9 @@ frappe.changepath=(id,name)=>{
     param=name
     frappe.param=name
     frappe.path="/site/"+frappeVars.ruta+"/"+name
-    window.history.pushState({screenid:id}, name, "/site/"+frappeVars.ruta+"/"+name);
+    if(frappeVars.allow_change_path==0){
+        window.history.pushState({screenid:id}, name, "/site/"+frappeVars.ruta+"/"+name);
+    }
 }
 
 frappe.fn=(data={},js)=>{const frappefn = new Function('data',js); frappefn(data,js) } 

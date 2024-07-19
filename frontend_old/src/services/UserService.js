@@ -38,10 +38,10 @@ class UserService extends AbstractService{
     }
 
     logout () {
-        localStorage.removeItem('quxUser');
-        Cookies.remove('quxUserLoggedIn')
-        Cookies.remove('quxUserLoggedIn', { path: '/' })
-        Cookies.remove('quxUserLoggedIn', { path: '/' , domain: 'quant-ux.com'})
+        //localStorage.removeItem('quxUser');
+        //Cookies.remove('quxUserLoggedIn')
+        //Cookies.remove('quxUserLoggedIn', { path: '/' })
+        //Cookies.remove('quxUserLoggedIn', { path: '/' , domain: 'quant-ux.com'})
         return this._delete('rest/login/')
     }
 
@@ -188,7 +188,7 @@ class UserService extends AbstractService{
         this.setTTL(u)
         this.user = u
         localStorage.setItem('quxUser', JSON.stringify(u));
-        Cookies.set('quxUserLoggedIn', JSON.stringify(u), { domain: 'quant-ux.com', expires: 7, secure: true, path:'/'}) 
+        //Cookies.set('quxUserLoggedIn', JSON.stringify(u), { domain: 'quant-ux.com', expires: 7, secure: true, path:'/'}) 
     }
 
     setLanguage (langauge) {

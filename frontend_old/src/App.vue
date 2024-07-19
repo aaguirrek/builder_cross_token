@@ -65,12 +65,6 @@ data: function() {
 			this.$router.push('/')
 			this.$root.$emit('MatcLogout', Services.getUserService().GUEST)
 		}
-		if (res.tokenTimedOut) {
-			alert('Your session has expired. Please login again')
-			Services.getUserService().logout()
-			this.$router.push('/')
-			this.$root.$emit('MatcLogout', Services.getUserService().GUEST)
-		}
 	},
 	initNLS () {
 		const language = Services.getUserService().getLanguage()
