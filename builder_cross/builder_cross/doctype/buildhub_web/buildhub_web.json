@@ -20,7 +20,15 @@
   "token",
   "full_mobile",
   "tiene_preload",
-  "header_y_footer_del_erp"
+  "header_y_footer_del_erp",
+  "javascript_tab",
+  "js_inject",
+  "css_tab",
+  "sass",
+  "header_tab",
+  "head",
+  "footer_tab",
+  "footer_html"
  ],
  "fields": [
   {
@@ -106,11 +114,54 @@
    "fieldname": "header_y_footer_del_erp",
    "fieldtype": "Check",
    "label": "header y footer del erp"
+  },
+  {
+   "fieldname": "javascript_tab",
+   "fieldtype": "Tab Break",
+   "label": "Javascript"
+  },
+  {
+   "fieldname": "css_tab",
+   "fieldtype": "Tab Break",
+   "label": "css"
+  },
+  {
+   "fieldname": "js_inject",
+   "fieldtype": "Code",
+   "label": "js",
+   "options": "JS"
+  },
+  {
+   "fieldname": "sass",
+   "fieldtype": "Code",
+   "label": "sass",
+   "options": "SCSS"
+  },
+  {
+   "fieldname": "header_tab",
+   "fieldtype": "Tab Break",
+   "label": "Header"
+  },
+  {
+   "fieldname": "head",
+   "fieldtype": "HTML Editor",
+   "ignore_xss_filter": 1,
+   "label": "head"
+  },
+  {
+   "fieldname": "footer_tab",
+   "fieldtype": "Tab Break",
+   "label": "Footer"
+  },
+  {
+   "fieldname": "footer_html",
+   "fieldtype": "HTML Editor",
+   "label": "Footer"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-02 09:58:57.144251",
+ "modified": "2024-07-27 13:08:02.210481",
  "modified_by": "Administrator",
  "module": "Builder Cross",
  "name": "Buildhub Web",

@@ -64,6 +64,7 @@ def get_context(context, **dict_params):
     context.csrf_token = csrf_token
     context.full_mobile = doc.full_mobile
     context.user_id = user
+    context.doc=doc
     context.title=doc.name
     context.primary_desk=primary_desk
     context.primary_cel=primary_cel
