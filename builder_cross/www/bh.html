@@ -1,41 +1,35 @@
-{%if header == 1%}
-
+{% if header == 1 %}
 {% extends "templates/web.html" %}
 {% block head_include %}
 <title>{{title}}</title>
-        
 <style>
-	body,
-	html {
-		padding: 0 !important;
-		margin: 0 !important;
-	}
-
-	main.container {
-		margin: 0 !important;
-		padding: 0 !important;
-		margin-top: 0 !important;
-		margin-bottom: 0 !important;
-		width: 100% !important;
-		max-width: unset;
-
-	}
-	#page-bh{
-                margin-top: -70px!important;}
-
-	.web-footer {
-		margin-top: 0;
-		border-top: none;
-	}
-	#navbarSupportedContent{
-		visibility: visible;
-	}
+        body, html {
+                padding: 0 !important;
+                margin: 0 !important;
+        }
+        main.container {
+                margin: 0 !important;
+                padding: 0 !important;
+                margin-top: 0 !important;
+                margin-bottom: 0 !important;
+                width: 100% !important;
+                max-width: unset!important;
+        }
+        #page-bh{
+                margin-top: -70px!important;
+        }
+        .web-footer {
+                margin-top: 0;
+                border-top: none;
+        }
+        #navbarSupportedContent{
+                visibility: visible;
+        }
         {% if full_mobile == 1 %}
         @media only screen and (max-width: 768px) {
                 nav.navbar,footer.web-footer{
                         display: none!important;
                 }
-
         }
         {% endif %}
 </style>
@@ -43,7 +37,6 @@
 <script>window.frappe = {};
 	frappe.param = "{{param}}";
 	frappe.init_route = "{{param}}";
-	//"{{doma}}"
 	frappe.preload = "{{preload}}"
 	let frappeVars = { from_partent: null, integrar: '0' }
         frappeVars.allow_change_path=1;
@@ -55,15 +48,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto:wght@300;400;700&family=Source+Sans+3:wght@300;400;700&display=swap"
 	rel="stylesheet">
 <style>
-	.MatcWidgetTypeRepeaterGrid.rows .MatcWidgetTypeRepeaterElement {
-			width: 100% !important;
-	}
+.MatcWidgetTypeRepeaterGrid.rows .MatcWidgetTypeRepeaterElement {
+        width: 100% !important;
+}
 
-	body {
-			overflow-y: hidden;
-			background: transparent !important;
-			background-color: transparent !important;
-	}
+body {
+        overflow-y: hidden;
+        background: transparent !important;
+        background-color: transparent !important;
+}
 </style>
 
 <script>
@@ -97,8 +90,10 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
 
 
 {%if doc %}
+{%if doc.head!=None%}
 {%if doc.head|safe %}
 {{doc.head}}
+{%endif%}
 {%endif%}
 {%if doc.sass %}
 <style>
@@ -217,7 +212,9 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
         
 {%if doc %}
 {%if doc.head %}
+{%if doc.head!=None%}
 {{doc.head|safe}}
+{%endif%}
 {%endif%}
 {%if doc.sass %}
 <style>
