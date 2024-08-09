@@ -11,7 +11,7 @@ const proxyMiddleware = require('http-proxy-middleware')
 const host = 'localhost'
 const assetsRoot = path.resolve(__dirname, '../dist')
 const port =  7882
-const proxyUrl = 'http://localhost:8082'
+const proxyUrl = 'https://backbuild.frappecorp.com'
 //'https://backbuild.frappecorp.com/'
 const wsUrl =  'wss://ws.quant-ux.com'
 const auth = process.env.QUX_AUTH || 'qux'
