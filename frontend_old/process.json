@@ -13,12 +13,6 @@
 	   "env_development": {
 		  "NODE_ENV": "development"
 	   }
-	 }],
-	 "deploy" : {
-	   "production" : {
-		  "user" : "frappe",
-		  "host" : ["0.0.0.0"]
-	   }
-	 }
+	 }]
    }
    
